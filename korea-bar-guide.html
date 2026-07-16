@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>위대한 AI님의 회기·석계 술집 가이드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%B6%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #090806;
+    --bg-2: #0e0c09;
+    --surface: #131009;
+    --surface-2: #19150c;
+    --line: rgba(220, 185, 130, 0.10);
+    --text: #ece2d0;
+    --text-dim: #c6b99e;
+    --text-faint: #9a8d73;
+    --accent: #e0a445;
+    --accent-bright: #f5c069;
+    --accent-ink: #120d05;
+    --tabe: #e0a445;
+    --goog: #8ab4f8;
+    --good: #8fae6b;
+    --warn: #dd7d47;
+    --michelin: #d34a3a;
+    --shadow: 0 16px 40px -18px rgba(0,0,0,0.85);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f7f0e2;
+    --bg-2: #f1e8d5;
+    --surface: #fffbf3;
+    --surface-2: #f4ead4;
+    --line: rgba(90, 60, 20, 0.14);
+    --text: #2b2013;
+    --text-dim: #5c4d38;
+    --text-faint: #8a7a5e;
+    --accent: #b96f1e;
+    --accent-bright: #8f5414;
+    --accent-ink: #fffaf0;
+    --tabe: #b96f1e;
+    --goog: #1a56c4;
+    --good: #4f7a34;
+    --warn: #b8501f;
+    --shadow: 0 12px 28px -18px rgba(60,40,10,0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent),
+      var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  header.masthead {
+    padding: 12px 0 40px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+
+  .masthead-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .masthead-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ===== 영상 히어로 + 산토리 인증 스토리 + 지도 밴드 ===== */
+  .video-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 375px;
+    max-height: 588px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 20%, rgba(212,175,55,.14), transparent 60%),
+      radial-gradient(ellipse 70% 55% at 25% 85%, rgba(224,57,60,.10), transparent 65%),
+      linear-gradient(160deg, #14100b 0%, #090806 55%, #0d0a12 100%);
+  }
+  .video-hero video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .video-hero .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(9,8,6,.28) 0%, rgba(9,8,6,.05) 34%, rgba(9,8,6,.52) 66%, rgba(9,8,6,.72) 100%);
+  }
+  .video-hero .hero-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 22vh 24px 0; gap: 14px;
+  }
+  .hero-eyebrow {
+    margin: 0;
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #f5c069;
+    text-shadow: 0 1px 12px rgba(0,0,0,.6);
+  }
+  .hero-title {
+    margin: 0;
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 52px);
+    line-height: 1.25;
+    color: #ece2d0;
+    text-shadow: 0 2px 24px rgba(0,0,0,.7);
+    text-wrap: balance;
+  }
+  .hero-rule { width: 56px; height: 2px; background: #e0a445; margin-top: 6px; }
+  .hero-scroll {
+    margin: 18px 0 0;
+    font-family: ui-monospace, monospace;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: #c6b99e;
+    opacity: .45;
+  }
+
+  .suntory-story {
+    position: relative;
+    background: #0e0c09;
+    border-top: 1px solid rgba(220,185,130,.14);
+    padding: 60px 24px;
+  }
+  .suntory-story .story-inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(300px, 460px) 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .suntory-story .story-eyebrow {
+    margin: 0; font-family: ui-monospace, monospace; font-weight: 600;
+    font-size: 12px; letter-spacing: .18em; color: #e0a445;
+  }
+  .suntory-story h2 {
+    margin: 8px 0 0;
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif;
+    font-weight: 700; font-size: clamp(22px, 3vw, 32px); line-height: 1.3;
+    color: #ece2d0;
+  }
+  .suntory-story .story-desc {
+    margin: 12px 0 0; font-size: 14.5px; line-height: 1.75; color: #c6b99e;
+  }
+  .suntory-story .story-tiers {
+    display: flex; flex-direction: column; gap: 8px; margin-top: 14px;
+    font-size: 13.5px; color: #c6b99e;
+    border-top: 1px solid rgba(220,185,130,.12); padding-top: 14px;
+  }
+  .suntory-story .story-tiers div { display: flex; gap: 12px; }
+  .suntory-story .story-tiers span:first-child {
+    color: #f5c069; font-weight: 700; flex: none; width: 96px;
+  }
+  .story-video-wrap {
+    position: relative; border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(224,164,69,.28);
+    box-shadow: 0 20px 50px -24px rgba(0,0,0,.9);
+    aspect-ratio: 16/9;
+  }
+  .story-video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .story-video-wrap .story-video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(9,8,6,0) 70%, rgba(9,8,6,.5) 100%);
+  }
+  .story-video-wrap .story-video-label {
+    position: absolute; left: 16px; bottom: 12px; margin: 0;
+    font-family: ui-monospace, monospace; font-weight: 600;
+    font-size: 11px; letter-spacing: .14em; color: #f5c069;
+  }
+
+  .map-band {
+    position: relative;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 32px 24px 28px;
+  }
+  .map-band .map-inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 460px) 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .map-band .map-eyebrow {
+    margin: 0 0 4px; font-family: ui-monospace, monospace; font-weight: 600;
+    font-size: 12px; letter-spacing: .18em; color: var(--accent);
+  }
+  .map-band h2 {
+    margin: 0 0 18px; font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif;
+    font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.3; color: var(--text);
+  }
+  .map-city-row {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    padding: 11px 6px; border-top: 1px solid var(--line);
+    cursor: pointer; transition: background .18s, padding-left .18s;
+  }
+  .map-city-row:last-child { border-bottom: 1px solid var(--line); }
+  .map-city-row:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); padding-left: 14px; }
+  .map-city-row .name-jp { display: flex; align-items: baseline; gap: 10px; }
+  .map-city-row .name-jp .ko { font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 21px; color: var(--text); }
+  .map-city-row .name-jp .jp { font-size: 11.5px; color: var(--text-faint); }
+  .map-city-row .count-arrow { display: flex; align-items: baseline; gap: 12px; }
+  .map-city-row .count { font-family: ui-monospace, monospace; font-weight: 600; font-size: 12.5px; color: var(--accent); }
+  .map-city-row .arrow { color: var(--text-faint); }
+  .map-picked-msg {
+    margin: 14px 0 0; font-family: ui-monospace, monospace; font-size: 12px;
+    color: var(--accent); opacity: .85; line-height: 1.6; min-height: 1.6em;
+  }
+  .map-svg-wrap svg { width: 100%; max-width: 460px; height: auto; display: block; overflow: visible; margin: 0 auto; }
+  .map-svg-wrap .jp-shape {
+    fill: color-mix(in srgb, var(--text) 5%, transparent);
+    stroke: color-mix(in srgb, var(--text) 17%, transparent);
+    stroke-width: 1.2;
+  }
+  .map-marker { cursor: pointer; opacity: .92; transition: opacity .15s; }
+  .map-marker:hover { opacity: 1; }
+  .map-marker .m-halo { fill: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .map-marker .m-pulse { fill: none; stroke: var(--accent); animation: mapPulse 2.4s ease-out infinite; }
+  .map-marker .m-dot { fill: var(--accent); stroke: var(--accent-bright); stroke-width: 1; }
+  .map-marker .m-lead { stroke: color-mix(in srgb, var(--accent) 45%, transparent); stroke-width: 1; stroke-dasharray: 2 3; }
+  .map-marker .m-name { font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; fill: var(--accent-bright); }
+  .map-marker .m-jp { font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 400; font-size: 10px; fill: var(--text-dim); }
+
+  @keyframes mapPulse { 0% { r: 6; opacity: .65; } 100% { r: 15; opacity: 0; } }
+
+  @media (max-width: 620px) {
+    .video-hero { height: 55vh; min-height: 360px; }
+    .suntory-story { padding: 36px 20px; }
+    .suntory-story .story-inner { grid-template-columns: 1fr; gap: 24px; }
+    /* 히어로 텍스트 단어 중간에 잘리지 않게(한글 단어 유지) */
+    .hero-eyebrow { word-break: keep-all; }
+    /* 모바일: 지도 그림(SVG)만 숨기고 도시별 매장수 리스트는 유지 + 축소 (사용자 지시) */
+    .map-band { padding: 26px 20px 22px; }
+    .map-band .map-inner { grid-template-columns: 1fr; gap: 0; }
+    .map-svg-wrap { display: none; }
+    .map-band .map-eyebrow { font-size: 11px; }
+    .map-band h2 { font-size: 21px; margin-bottom: 12px; }
+    .map-city-row { padding: 9px 4px; }
+    .map-city-row .name-jp .ko { font-size: 16px; }
+    .map-city-row .name-jp .jp { font-size: 10.5px; }
+    .map-city-row .count { font-size: 11.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .map-marker .m-pulse { animation: none; }
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .22s var(--ease-out), visibility 0s linear .22s;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .22s var(--ease-out), visibility 0s linear 0s;
+  }
+
+  .modal-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 28px 28px 24px;
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,0.7);
+    transform: scale(.94) translateY(8px);
+    transition: transform .28s var(--ease-out);
+  }
+  .modal-overlay.open .modal-panel { transform: scale(1) translateY(0); }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .modal-head h2 {
+    font-family: "Zen Kaku Gothic New", "Noto Sans KR", "Hiragino Kaku Gothic ProN", "Malgun Gothic", sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--accent-bright);
+  }
+  .modal-close {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    color: var(--text-dim);
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .15s var(--ease-spring), border-color .15s, color .15s;
+  }
+  .modal-close:hover { border-color: var(--accent); color: var(--text); }
+  .modal-close:active { transform: scale(.88); }
+  .modal-sub {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    margin: 0 0 20px;
+  }
+  .manner-section { margin-bottom: 18px; }
+  .manner-section:last-child { margin-bottom: 0; }
+  .manner-section h3 {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .manner-item {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 13.5px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .manner-item .term {
+    flex: none;
+    width: 108px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .manner-item .desc strong { color: var(--warn); font-weight: 600; }
+
+  .eyebrow {
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+
+  h1 {
+    font-family: "Zen Kaku Gothic New", "Noto Sans KR", "Hiragino Kaku Gothic ProN", "Malgun Gothic", sans-serif;
+    font-size: clamp(30px, 4.4vw, 46px);
+    font-weight: 600;
+    margin: 0 0 10px;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    color: var(--text);
+  }
+
+  .sub {
+    color: var(--text-dim);
+    font-size: 15.5px;
+    max-width: 100%;
+    margin: 0 0 16px;
+    line-height: 1.65;
+  }
+
+  .tier-explainer {
+    max-width: 100%;
+    margin: 0 0 22px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+  .tier-explainer strong { color: var(--accent-bright); font-weight: 700; }
+  .tier-explainer .tier-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 10px;
+    margin-top: 8px;
+  }
+  .tier-explainer .tier-name { color: var(--accent-bright); font-weight: 600; white-space: nowrap; }
+  .tier-section-label {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    font-weight: 600;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .tier-explainer .tier-grid:first-of-type,
+  .tier-section-label:first-of-type { border-top: none; padding-top: 0; margin-top: 8px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+  .legend span.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:1px; }
+  .legend .d-good { background: var(--good); }
+  .legend .d-tier { background: var(--accent); }
+
+  .score-note {
+    max-width: 1200px; margin: 0 auto; padding: 11px 16px 0;
+    display: flex; gap: 9px; align-items: flex-start;
+    font-size: 12px; line-height: 1.6; color: var(--text-faint);
+  }
+  .score-note .sn-i { flex: none; }
+  .score-note b { color: var(--text-dim); font-weight: 600; }
+  .score-note b.sn-t { color: var(--tabe); }
+  .score-note b.sn-g { color: var(--goog); }
+  @media (max-width: 620px) { .score-note { font-size: 11.5px; padding: 10px 14px 0; } }
+
+  .theme-toggle {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-dim);
+    font-size: 12.5px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    transition: transform .15s var(--ease-spring), border-color .15s, color .15s;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+  .theme-toggle:active { transform: scale(.94); }
+
+  /* 화면 우상단 고정 툴 (식사예절 · 다크모드) */
+  .floating-tools {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 30;
+    display: flex;
+    gap: 8px;
+  }
+  .floating-tools .theme-toggle {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 14px -6px rgba(0,0,0,.5);
+  }
+  @media (max-width: 620px) {
+    .floating-tools { top: 10px; right: 10px; gap: 6px; }
+    .floating-tools .theme-toggle { padding: 7px 11px; font-size: 11.5px; }
+    /* sticky 필터바 고정 시 플로팅버튼(식사예절/다크모드)이 도시탭 덮어 클릭 방해 → 상단 여백으로 탭을 버튼 아래로.
+       .wrap 접두로 특정성 올림(뒤에 오는 기본 .controls{padding} 오버라이드 방지). filter-boxed 자체 top패딩 16px 있어 합산 navTop≈56 > 버튼 bottom 42 */
+    .wrap .controls { padding-top: 40px; }
+  }
+
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg);
+    padding: 14px 0 16px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .filter-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+  }
+
+  .filter-boxed {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 10.5px;
+    color: var(--text-faint);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .count-inline {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    font-variant-numeric: tabular-nums;
+    margin-left: auto;
+  }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .sort-select {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-dim);
+    font-size: 13px;
+    padding: 6px 26px 6px 13px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a89b83' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  .sort-select:hover { border-color: var(--accent); color: var(--text); }
+  .sort-select:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+  .sort-select:active { transform: scale(.96); }
+
+  .chip {
+    appearance: none;
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--line));
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 12.5px;
+    padding: 6px 15px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: border-color .15s, color .15s, background .15s, box-shadow .15s, transform .15s var(--ease-spring);
+  }
+  .chip:hover { border-color: var(--accent); color: var(--text); }
+  .chip:active { transform: scale(.93); }
+  .chip.active {
+    background: linear-gradient(var(--accent-bright), var(--accent));
+    border-color: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    box-shadow: 0 2px 8px -2px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
+  /* 도시 내비 — 언더라인 강조 (탭형) */
+  .city-nav {
+    align-items: flex-end;
+    gap: 26px;
+    padding-bottom: 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 4px;
+  }
+  .city-nav .chip {
+    appearance: none;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 0 14px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-faint);
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .2s var(--ease-out), opacity .12s;
+  }
+  .city-nav .chip:hover { color: var(--text); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+  .city-nav .chip:active { opacity: .55; }
+  .city-nav .chip.active {
+    background: transparent;
+    color: var(--text);
+    border-bottom-color: var(--accent);
+    box-shadow: none;
+  }
+
+  /* ===== 5A 필터 ===== */
+  .f-citytabs { display: flex; align-items: flex-end; gap: 16px; }
+  .f-citytabs .city-nav { flex: 1; margin-bottom: 0; }
+  .f-showing { font-size: 12.5px; color: var(--text-faint); padding-bottom: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .f-ribbon { position: relative; margin-top: 2px; border-radius: 14px; overflow: hidden;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--bg)), color-mix(in srgb, var(--accent) 6%, var(--bg)) 60%);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+  .f-ribbon::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(700px 220px at 8% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent); }
+  .f-ribbon-in { position: relative; display: flex; align-items: stretch; gap: 18px; padding: 13px 18px; }
+  .f-brand { flex: none; align-self: center; width: 158px; }
+  .f-brand-eye { font-size: 9.5px; letter-spacing: .3em; color: var(--accent); font-weight: 700; }
+  .f-brand-title { font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 19px; color: var(--accent-bright); margin-top: 2px; }
+  .f-brand-sub { font-size: 10.5px; color: var(--text-faint); margin-top: 4px; line-height: 1.5; }
+  .f-brand-div { width: 1px; background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .f-tier-cards { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .f-tier-card { text-align: left; cursor: pointer; border-radius: 10px; padding: 9px 12px; font-family: inherit;
+    border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent); background: color-mix(in srgb, var(--bg) 55%, transparent); color: var(--text);
+    transition: border-color .15s, transform .15s var(--ease-spring), box-shadow .15s; }
+  .f-tier-card:active { transform: scale(.97); }
+  .f-tier-card .tc-name { display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 800; }
+  .f-tier-card .tc-desc { display: block; font-size: 10.5px; margin-top: 2px; color: var(--text-faint); }
+  .f-tier-card .tc-n { display: block; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 16px; margin-top: 5px; color: var(--text-dim); }
+  .f-tier-card .tc-n small { font-size: 10px; font-weight: 500; color: var(--text-faint); }
+  .f-tier-card .tc-tag { font-size: 9px; letter-spacing: .06em; font-weight: 800; padding: 1px 5px; border-radius: 99px; }
+  .f-tier-card .tc-tag.sup { background: linear-gradient(var(--accent-bright), var(--accent)); color: var(--accent-ink); }
+  .f-tier-card .tc-tag.dal { border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); }
+  .f-tier-card.active { background: linear-gradient(var(--accent-bright), var(--accent)); border-color: var(--accent); color: var(--accent-ink);
+    box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--accent) 50%, transparent); }
+  .f-tier-card.active .tc-name, .f-tier-card.active .tc-desc, .f-tier-card.active .tc-n, .f-tier-card.active .tc-n small { color: var(--accent-ink); }
+  .f-tier-card.active .tc-tag.sup { background: var(--accent-ink); color: var(--accent-bright); }
+  .f-tier-card.active .tc-tag.dal { border-color: var(--accent-ink); color: var(--accent-ink); }
+
+  /* 모바일 전용 하위필터 토글 버튼 — 데스크톱 숨김 */
+  .f-filter-toggle { display: none; width: 100%; justify-content: center; align-items: center; gap: 7px;
+    appearance: none; font-family: inherit; font-size: 13px; font-weight: 600; margin-top: 2px;
+    padding: 9px 14px; border-radius: 9px; border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    background: transparent; color: var(--text-dim); cursor: pointer; white-space: nowrap;
+    transition: border-color .15s, color .15s, background .15s; }
+  .f-filter-toggle.on { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text); border-color: var(--accent); }
+
+  .f-oneline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .f-sep { width: 1px; height: 22px; background: color-mix(in srgb, var(--accent) 15%, transparent); margin: 0 4px; }
+  .f-pill { appearance: none; font-family: inherit; padding: 8px 14px; border-radius: 9px;
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); background: transparent; color: var(--text-dim);
+    font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+    transition: border-color .15s, color .15s, background .15s, transform .15s var(--ease-spring); }
+  .f-pill:hover { border-color: var(--accent); color: var(--text); }
+  .f-pill:active { transform: scale(.95); }
+  .f-pill.active { background: linear-gradient(var(--accent-bright), var(--accent)); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+  .f-pill .car { transition: transform .18s; }
+  .f-drop.open .f-pill .car { transform: rotate(180deg); }
+  .f-drop { position: relative; }
+  .f-drop-panel { position: absolute; top: calc(100% + 6px); left: 0; z-index: 20; min-width: 220px;
+    background: var(--bg); border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line)); border-radius: 12px;
+    padding: 12px 14px 14px; box-shadow: 0 20px 50px -20px rgba(0,0,0,.7); display: none; }
+  .f-drop.open .f-drop-panel { display: block; }
+  .f-drop-panel .dp-label { font-size: 10.5px; letter-spacing: .12em; color: var(--text-faint); font-weight: 600; margin: 12px 0 7px; }
+  .f-drop-panel .dp-label:first-child { margin-top: 0; }
+  .f-genre-hidden { display: none; }
+  .f-genre.expanded .f-genre-hidden { display: inline-flex; }
+
+  @media (max-width: 820px) {
+    .f-citytabs { flex-direction: column; align-items: stretch; gap: 2px; padding-right: 0; }
+    .f-showing { padding-bottom: 6px; }
+    .f-ribbon-in { flex-direction: column; gap: 14px; padding: 16px; }
+    .f-brand { width: auto; }
+    .f-brand-div { display: none; }
+    .f-tier-cards { grid-template-columns: 1fr 1fr; }
+    .f-oneline .sort-select { margin-left: 0 !important; }
+  }
+
+
+  .count {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    margin: -14px 0 24px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  section.city { margin-bottom: 52px; scroll-margin-top: 74px; }
+
+  .city-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .city-head h2 {
+    font-family: "Zen Kaku Gothic New", "Noto Sans KR", "Hiragino Kaku Gothic ProN", "Malgun Gothic", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--accent-bright);
+  }
+  .city-head .jp { color: var(--text-faint); font-size: 13px; font-weight: 400; }
+  .city-head .rule { flex: 1; height: 1px; background: var(--line); }
+  .city-head .n { font-size: 12px; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s var(--ease-out), border-color .25s var(--ease-out), box-shadow .25s var(--ease-out);
+  }
+  .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+  .card:active { transform: translateY(-1px) scale(.98); }
+
+  .thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: var(--surface-2);
+    overflow: hidden;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb .noimg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 6px;
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+  .thumb .noimg svg { opacity: 0.5; }
+
+  .masters-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, #f7d375, #d99a2e 55%, #a9720f);
+    color: #2a1704;
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px -2px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.4);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+    cursor: default;
+  }
+
+
+  .bucket-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: color-mix(in srgb, var(--accent-ink) 78%, transparent);
+    color: var(--accent-bright);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+  }
+
+  .body { padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 0; flex: 1; }
+
+  .c-name-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .name {
+    font-family: "Zen Kaku Gothic New", "Noto Sans KR", "Hiragino Kaku Gothic ProN", "Malgun Gothic", sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--text);
+  }
+  .c-sub { font-size: 12.5px; color: var(--text-dim); margin: 3px 0 0; }
+
+  /* 종합 크게 + 근거(타베로그·구글) 작게 — 변형 C */
+  .c-score-row { display: flex; align-items: center; gap: 13px; margin-top: 14px; }
+  .cs-avg { display: flex; flex-direction: column; align-items: center; line-height: 1; flex: none; }
+  .cs-avg .cs-big { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 29px; font-weight: 600; color: var(--accent-bright); }
+  .cs-avg .cs-cap { font-size: 10px; letter-spacing: .12em; color: var(--text-faint); margin-top: 3px; }
+  .cs-brk { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .cs-line { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); text-decoration: none; }
+  .cs-line:hover { color: var(--text); }
+  .cs-line b { font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 600; }
+  .cs-line.t b { color: var(--tabe); }
+  .cs-line.g b { color: var(--goog); }
+  .cs-dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+  .cs-dot.t { background: var(--tabe); }
+  .cs-dot.g { background: var(--goog); }
+  .cs-rv { font-size: 11px; color: var(--text-faint); }
+  .cs-kr { margin-left: auto; align-self: center; display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+  .cs-kr .cs-kr-tag { color: #e0393c; font-weight: 600; }
+
+  .c-tier { display: flex; align-items: center; gap: 7px; margin-top: 9px; font-size: 12.5px; color: var(--accent); }
+  .c-tier .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .c-kr { color: #e0393c; }
+
+  .c-hr { height: 1px; background: var(--line); margin: 16px 0 14px; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badges + .badges { margin-top: -6px; }
+  .badge {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .badge.tier { color: var(--accent-bright); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+
+  .meta { font-size: 13px; color: var(--text-dim); display: flex; flex-direction: column; gap: 4px; }
+  .meta .row { display: flex; gap: 6px; }
+  .meta .k { color: var(--text-faint); flex: none; width: 40px; }
+  .meta .v { flex: 1; }
+  .access-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--text-faint);
+    text-underline-offset: 2px;
+  }
+  .access-link:hover { color: var(--accent-bright); text-decoration-color: var(--accent-bright); }
+
+  .c-menu {
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 13px 15px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .c-menu-label { font-size: 10.5px; letter-spacing: .2em; color: var(--text-faint); }
+  .c-menu .jp { font-size: 13.5px; color: var(--text); }
+  .c-menu .kr { font-size: 12px; color: #ab9f88; }
+
+  .c-foot { margin-top: auto; padding-top: 15px; font-size: 11.5px; letter-spacing: .1em; color: var(--text-faint); }
+
+  .maplink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--accent-bright);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+    transition: background .15s;
+  }
+  .maplink:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .weblink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+  .weblink:hover { border-color: var(--accent); color: var(--accent-bright); }
+  .link-row { display: flex; align-items: center; gap: 6px; }
+  .maplink:focus-visible, .weblink:focus-visible, .chip:focus-visible, .search input:focus-visible, .theme-toggle:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
+  }
+
+  .michelin {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--michelin);
+  }
+  .michelin .star { font-size: 12px; line-height: 1; }
+  .michelin .bib {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    border: 1.4px solid var(--michelin);
+    font-size: 9.5px;
+    font-weight: 800;
+    color: var(--michelin);
+  }
+
+  .closed { font-size: 12.5px; color: var(--text-faint); }
+
+  .empty {
+    text-align: center;
+    color: var(--text-faint);
+    padding: 60px 20px;
+    font-size: 14px;
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--text-faint);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .card, .chip, .theme-toggle, .modal-close, .sort-select, .city-nav .chip, .modal-overlay, .modal-panel {
+      transition: none;
+    }
+    .card:active, .chip:active, .theme-toggle:active, .modal-close:active, .sort-select:active, .city-nav .chip:active {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* ===== 2a: 도시별 대표 매거진 카드 ===== */
+  .mag-card {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 26px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    box-shadow: var(--shadow);
+  }
+  .mag-photo { position: relative; min-height: 400px; }
+  .mag-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mag-photo .mag-gradient {
+    position: absolute; inset: auto 0 0 0; height: 120px;
+    background: linear-gradient(transparent, rgba(14,12,9,.6));
+  }
+  .mag-photo .mag-tag {
+    position: absolute; left: 20px; top: 18px;
+    font-size: 10px; letter-spacing: .22em; color: rgba(255,255,255,.9);
+    background: rgba(14,12,9,.55); padding: 6px 12px; border-radius: 99px;
+    backdrop-filter: blur(4px);
+  }
+  .mag-photo .masters-badge { top: 18px; right: 20px; }
+  .mag-score {
+    position: absolute; left: 20px; bottom: 16px;
+    display: flex; align-items: baseline; gap: 8px;
+    text-decoration: none; cursor: pointer;
+  }
+  .mag-score .num { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 34px; font-weight: 600; color: var(--accent); }
+  .mag-score .stat { font-size: 11px; letter-spacing: .12em; color: rgba(255,255,255,.85); }
+  .mag-scorebrk { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 12px 0 0; }
+  .mag-body { padding: 32px 34px; display: flex; flex-direction: column; }
+  .mag-name { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 26px; font-weight: 700; line-height: 1.35; margin: 0; color: var(--text); }
+  .mag-name a { color: inherit; text-decoration: none; }
+  .mag-name-kr { font-size: 14px; color: var(--text-dim); margin: 6px 0 0; }
+  .mag-tier { display: flex; align-items: center; gap: 7px; margin-top: 14px; font-size: 13px; color: var(--accent); }
+  .mag-tier .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .mag-hr { height: 1px; background: var(--line); margin: 20px 0 16px; }
+  .mag-info { display: grid; grid-template-columns: 42px 1fr; row-gap: 9px; font-size: 13.5px; line-height: 1.6; }
+  .mag-info .k { color: var(--text-faint); font-size: 11.5px; letter-spacing: .06em; padding-top: 1px; }
+  .mag-info .v { color: var(--text-dim); }
+  .mag-menu-label { font-size: 10.5px; letter-spacing: .2em; color: var(--text-faint); margin-top: 18px; }
+  .mag-menu { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .mag-menu .jp { font-size: 14px; color: var(--text); }
+  .mag-menu .kr { font-size: 12px; color: #ab9f88; }
+  .mag-foot { margin-top: auto; padding-top: 18px; font-size: 11.5px; letter-spacing: .1em; color: var(--text-faint); }
+  @media (max-width: 820px) {
+    .mag-card { grid-template-columns: 1fr; }
+    .mag-photo { min-height: 240px; }
+  }
+
+  /* ===== 2b: 모바일 사진 타일 → 탭 상세 ===== */
+  .thumb-score { display: none; }
+  .thumb-count { display: none; }  /* 확장카드서만 노출(모바일) — 사진 좌우 스와이프 카운터 */
+  @media (max-width: 620px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid .card { border-radius: 10px; cursor: pointer; }
+    .grid .card .thumb { height: 118px; transition: height .32s var(--ease-out); }
+    .grid .card .bucket-tag { left: 9px; top: 8px; font-size: 8.5px; letter-spacing: .14em; padding: 3px 7px; }
+    .grid .card .thumb-score {
+      display: block; position: absolute; right: 9px; bottom: 8px;
+      font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent);
+    }
+    .grid .card .body { padding: 10px 11px 12px; }
+    .grid .card .name { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .grid .card .c-sub { font-size: 10px; color: #8a8071; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+    .grid .card:not(.is-open) .c-score-row,
+    .grid .card:not(.is-open) .c-tier,
+    .grid .card:not(.is-open) .c-hr,
+    .grid .card:not(.is-open) .meta,
+    .grid .card:not(.is-open) .c-menu,
+    .grid .card:not(.is-open) .c-foot { display: none; }
+    .grid .card.is-open { grid-column: 1 / -1; cursor: default; }
+    .grid .card.is-open .thumb { height: 200px; }
+    /* 사진 드래그 캐러셀 트랙 — 손가락 따라 끌리고 스냅 */
+    .grid .card .thumb-track { position: absolute; inset: 0; display: flex; touch-action: pan-y; will-change: transform; }
+    .grid .card .thumb-track img { width: 100%; height: 100%; flex: none; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+    .grid .card.is-open .thumb-count {
+      display: flex; align-items: center; position: absolute;
+      left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 2;
+      padding: 4px 12px; border-radius: 999px;
+      background: rgba(0,0,0,.55); color: #fff;
+      font-size: 12px; font-weight: 600; letter-spacing: .04em;
+      font-variant-numeric: tabular-nums; pointer-events: none;
+    }
+    .grid .card.is-open .name,
+    .grid .card.is-open .c-sub { white-space: normal; overflow: visible; text-overflow: unset; }
+  }
+  @media (max-width: 620px) and (prefers-reduced-motion: reduce) {
+    .grid .card .thumb { transition: none; }
+  }
+
+  /* 필터/정렬 변경 시 결과 영역 크로스페이드 (View Transitions API, render()에서 트리거) */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: .28s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #060407;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .6s ease;
+  }
+  .splash-screen video {
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+    max-height: 1080px;
+    object-fit: cover;
+  }
+  /* 모바일 세로화면: 16:9 인트로가 cover로 잘려 주제(병)가 화면 밖으로 밀림 → contain으로 전체 노출. 배경(#060407)이 거의 검정이라 레터박스 티 안남 */
+  @media (max-width: 620px) {
+    .splash-screen video { object-fit: contain; }
+  }
+  .splash-screen.splash-hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+  body.splash-active {
+    overflow: hidden;
+  }
+
+  /* 사진 마킹모드 — 교체할 사진 있는 가게 표시용 임시 도구 */
+  .photo-flag {
+    display: none;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    z-index: 5;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+  body.flag-mode .photo-flag {
+    display: flex;
+  }
+  body.flag-mode .card.flagged .thumb {
+    outline: 3px solid #e0393c;
+    outline-offset: -3px;
+  }
+  .photo-flag.on {
+    background: #e0393c;
+  }
+  #flagExportBar {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9998;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  body.flag-mode #flagExportBar {
+    display: flex;
+  }
+  #flagExportBar button {
+    background: #e0393c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  @media (min-width: 621px) {
+    .thumb, .mag-photo { cursor: pointer; }
+  }
+  .photo-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0,0,0,.85);
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-modal.open {
+    display: flex;
+  }
+  .photo-modal-inner {
+    position: relative;
+    max-width: 92vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .photo-modal-img {
+    max-width: 92vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .photo-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .photo-modal-prev, .photo-modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,.5);
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+  }
+  .photo-modal-prev { left: -8px; }
+  .photo-modal-next { right: -8px; }
+  .photo-modal.multi .photo-modal-prev,
+  .photo-modal.multi .photo-modal-next {
+    display: block;
+  }
+  .photo-modal-dots {
+    display: none;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .photo-modal.multi .photo-modal-dots {
+    display: flex;
+  }
+  .photo-modal-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.4);
+  }
+  .photo-modal-dots span.active {
+    background: #fff;
+  }
+
+  /* ===== MASTER'S DREAM HOUSE 직영 섹션 (4a) — 항상 다크 ===== */
+  .mdh-band { position: relative; background:
+      radial-gradient(120% 80% at 50% -10%, rgba(224,164,69,.10), transparent 60%),
+      linear-gradient(180deg, #0d0a06, #0a0805);
+    border-top: 1px solid rgba(220,185,130,.10); padding: 60px 24px 56px; }
+  .mdh-in { max-width: 1260px; margin: 0 auto; }
+  .mdh-head { text-align: center; max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; gap: 10px; }
+  .mdh-eye { margin: 0; font: 600 12px ui-monospace, monospace; letter-spacing: .2em; color: #e0a445; text-transform: uppercase; }
+  .mdh-h2 { margin: 0; font: 900 clamp(26px,4vw,38px)/1.25 'Zen Kaku Gothic New','Noto Sans KR',sans-serif; color: #f4e6cd; }
+  .mdh-jp { margin: 0; font-size: 13px; letter-spacing: .28em; color: #e0a445; opacity: .85; }
+  .mdh-desc { margin: 6px 0 0; font-size: 14.5px; line-height: 1.8; color: #c6b99e; }
+  .mdh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .mdh-card { background: linear-gradient(180deg,#14100a,#0e0b07); border: 1px solid rgba(224,164,69,.20);
+    border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px -34px rgba(0,0,0,.9);
+    transition: transform .25s var(--ease-out), border-color .25s; display: block; text-decoration: none; }
+  .mdh-card:hover { transform: translateY(-4px); border-color: rgba(224,164,69,.42); }
+  .mdh-photo { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .mdh-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mdh-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(9,8,6,.78)); }
+  .mdh-city { position: absolute; left: 16px; bottom: 12px; margin: 0; z-index: 1;
+    font: 600 11px ui-monospace, monospace; letter-spacing: .14em; color: #f5c069; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+  .mdh-badge { position: absolute; top: 14px; right: 14px; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; background: linear-gradient(135deg,#f7d375,#d99a2e 55%,#a9720f); color: #2a1704; font-size: 15px; font-weight: 900;
+    border-radius: 50%; box-shadow: 0 3px 10px -2px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.4); }
+  .mdh-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 4px; }
+  .mdh-name { margin: 0; font: 700 18px 'Zen Kaku Gothic New', sans-serif; color: #f2e6d0; }
+  .mdh-kr { margin: 0; font-size: 12.5px; color: #9a8d73; }
+  .mdh-score { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 8px; }
+  .mdh-score .n { font: 900 22px ui-monospace, monospace; color: #f5c069; }
+  .mdh-score .r { font-size: 12px; color: #9a8d73; font-weight: 700; }
+  .mdh-meta { font-size: 12.5px; color: #c6b99e; line-height: 1.85; }
+  .mdh-meta .k { color: #e0a445; font-weight: 700; margin-right: 6px; }
+  @media (max-width: 820px) {
+    .mdh-band { padding: 40px 20px; }
+    .mdh-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* ===== 모바일 필터 재구성 (세션18, 사용자지시) — 모든 base 규칙 뒤에 둬서 소스순서로 이기게 함 =====
+     지도숨김은 위 254블록, 매거진 첫카드 제거는 renderResults JS. 여기선 도시탭 압축/토글/MDH컴팩트. */
+  @media (max-width: 620px) {
+    /* 도시탭만 한 줄(가로스크롤 안전장치), 표시중 카운트 숨김 */
+    .f-citytabs .f-showing { display: none; }
+    .city-nav { gap: 12px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .city-nav::-webkit-scrollbar { display: none; }
+    .city-nav .chip { font-size: 13.5px; padding-bottom: 8px; white-space: nowrap; flex: none; }
+
+    /* 하위필터(등급리본 / 장르·점수·미슐랭·정렬 / 범례) → '필터 ⚙' 토글 뒤로, 닫힘 시 숨김 */
+    .controls:not(.filters-open) .f-ribbon,
+    .controls:not(.filters-open) .f-oneline,
+    .controls:not(.filters-open) .legend { display: none; }
+    .f-filter-toggle { display: flex; }
+
+    /* 필터 열림 시 등급카드·칩·버튼이 너무 커서 모바일서 축소 */
+    .f-ribbon-in { padding: 11px 12px; gap: 12px; }
+    /* SUNTORY 브랜드블록: 좌(일어 제목) / 우(설명) 가로분할로 높이 축소 */
+    .f-brand { width: 100%; display: flex; align-items: center; gap: 14px; }
+    .f-brand-name { flex: none; }
+    .f-brand-title { font-size: 16px; }
+    .f-brand-sub { flex: 1; font-size: 9.5px; margin-top: 0; padding-left: 14px;
+      border-left: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); }
+    .f-tier-cards { gap: 6px; }
+    .f-tier-card { padding: 7px 9px; }
+    .f-tier-card .tc-name { font-size: 12px; }
+    .f-tier-card .tc-desc { font-size: 9px; }
+    .f-tier-card .tc-n { font-size: 13.5px; }
+    .f-tier-card .tc-tag { font-size: 7.5px; }
+    .f-oneline { gap: 6px; }
+    .f-oneline .chip { font-size: 11.5px; padding: 5px 11px; }
+    .f-pill { font-size: 11.5px; padding: 6px 11px; }
+    .sort-select { font-size: 11.5px; padding: 5px 22px 5px 11px; }
+    .legend { font-size: 11px; }
+
+    /* 아이폰식 터치감: 탭 시 회색 플래시 제거, 탭 UI 텍스트선택 방지(카드 본문 주소 등은 선택 유지) */
+    * { -webkit-tap-highlight-color: transparent; }
+    .city-nav, .chip, .f-pill, .f-tier-card, .theme-toggle, .f-filter-toggle,
+    .sort-select, .map-city-row, .grid .card .thumb, .tc-name, .f-brand {
+      -webkit-user-select: none; user-select: none;
+    }
+
+    /* MASTER'S DREAM HOUSE 직영 3카드 → 가로 컴팩트(사진 좌측 축소 + 이름·점수만, 상세meta 숨김) */
+    .mdh-band { padding: 30px 18px; }
+    .mdh-head { margin-bottom: 20px; }
+    .mdh-card { display: flex; align-items: stretch; }
+    .mdh-photo { width: 104px; flex: none; aspect-ratio: auto; }
+    .mdh-body { flex: 1; padding: 10px 12px; gap: 2px; justify-content: center; }
+    .mdh-name { font-size: 15px; }
+    /* 리뷰 근거를 한 줄로: 큰 종합숫자·'종합 ·' 접두 숨기고 타베로그·구글만 nowrap */
+    .mdh-score { margin: 5px 0 0; }
+    .mdh-score .n { display: none; }
+    .mdh-score .r .lead { display: none; }
+    .mdh-score .r { white-space: nowrap; font-size: 10.5px; letter-spacing: -0.1px; }
+    .mdh-meta { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="flagExportBar">
+  <span id="flagCount">0개 표시됨</span>
+  <button id="flagExportBtn" type="button">목록 복사</button>
+  <button id="flagClearBtn" type="button">전체 해제</button>
+</div>
+<div id="photoModal" class="photo-modal">
+  <div class="photo-modal-inner">
+    <button class="photo-modal-close" type="button" title="닫기">✕</button>
+    <button class="photo-modal-prev" type="button" title="이전 사진">‹</button>
+    <img class="photo-modal-img" alt="">
+    <button class="photo-modal-next" type="button" title="다음 사진">›</button>
+    <div class="photo-modal-dots"></div>
+  </div>
+</div>
+<div class="floating-tools">
+  <button class="theme-toggle" id="themeToggle" type="button">🌙 다크모드</button>
+</div>
+<section class="video-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">네이버 방문자리뷰·블로그 교차 검증 · <span style="white-space:nowrap" id="heroCount">2개 역세권 총 40곳</span></p>
+    <h1 class="hero-title">위대한 AI님의 회기·석계 술집 가이드</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-scroll">Featured by Soul</p>
+  </div>
+</section>
+<section class="map-band">
+  <div class="map-inner">
+  <div>
+    <p class="map-eyebrow">AREA NAVI</p>
+    <h2>2개 역세권 총 40곳</h2>
+    <div class="map-city-row" data-city="회기">
+      <div class="name-jp"><span class="ko">회기</span><span class="jp">HOEGI · 경희대 대학가</span></div>
+      <div class="count-arrow"><span class="count">20곳</span><span class="arrow">→</span></div>
+    </div>
+    <div class="map-city-row" data-city="석계">
+      <div class="name-jp"><span class="ko">석계</span><span class="jp">SEOKGYE · 로컬 먹자골목</span></div>
+      <div class="count-arrow"><span class="count">20곳</span><span class="arrow">→</span></div>
+    </div>
+    <p class="map-picked-msg" id="mapPickedMsg"></p>
+  </div>
+  </div>
+</section>
+<div class="wrap">
+  <div class="controls">
+    <div class="filter-boxed">
+      <!-- 도시 탭 + 표시중 카운트 -->
+      <div class="f-citytabs">
+        <div class="chip-row city-nav" id="cityChips"></div>
+        <span class="f-showing" id="countLine"></span>
+      </div>
+
+      <!-- 모바일 전용: 하위필터 토글 (데스크톱 CSS로 숨김) -->
+      <button class="f-filter-toggle" id="filterToggle" type="button" aria-expanded="false">필터 ⚙</button>
+
+      <!-- 업종 + 리뷰수 + 정렬 -->
+      <div class="f-oneline">
+        <div class="chip-row f-genre" id="bucketChips"></div>
+        <span class="f-sep"></span>
+        <div class="f-drop" id="scoreDrop">
+          <button class="f-pill" id="scoreDropBtn" type="button">리뷰 수 <svg class="car" width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></button>
+          <div class="f-drop-panel">
+            <div class="dp-label">네이버 방문자리뷰 수</div>
+            <div class="chip-row" id="reviewChips"></div>
+          </div>
+        </div>
+        <select class="sort-select" id="sortSelect" style="margin-left:auto;">
+          <option value="default">기본순</option>
+          <option value="visitor">방문자리뷰 많은순</option>
+          <option value="blog">블로그리뷰 많은순</option>
+        </select>
+      </div>
+
+      <!-- 범례 -->
+      <div class="legend">
+        <span>네이버 플레이스 방문자리뷰·블로그리뷰 수 기준 선별 · 바/와인바 제외</span>
+      </div>
+    </div>
+  </div>
+
+  <main id="results"></main>
+
+  <footer>
+    <p>사진: 네이버 플레이스 등 공개 출처 — 정책상 일부는 표시되지 않을 수 있습니다. 업체명을 클릭하면 네이버 플레이스로, 주소·교통을 클릭하면 구글맵으로 연결됩니다.</p>
+    <p>선별 기준: 네이버 방문자리뷰 수 상위 + 블로그 언급 교차 검증. 바·와인바·칵테일바는 제외했습니다.</p>
+    <p>리서치 기준일 2026-07-16. 영업시간·정기휴무·가격은 방문 전 재확인 권장.</p>
+    <div style="margin-top:18px;"><button class="theme-toggle" id="flagModeToggle" type="button">🚩 사진 마킹</button></div>
+  </footer>
+</div>
+
+
+<script>
+// 스키마: {city:'회기'|'석계', name, bucket, genre, address, access, budget, closed?,
+//          visitorReviews, blogReviews, naverUrl, menu:[문자열3], photo, card?, reserve?}
+const DATA = [
+];
+
+const CITY_ORDER = ['회기','석계'];
+const CITY_EN = { '회기':'HOEGI', '석계':'SEOKGYE' };
+const BUCKETS = [];   // Task 3에서 리서치 실분포로 확정
+function deriveBucket(item) {
+  return BUCKETS.includes(item.bucket) ? item.bucket : '기타';
+}
+const REVIEW_STEPS = [
+  {label:'전체', min:0},
+  {label:'100+', min:100},
+  {label:'500+', min:500},
+  {label:'1000+', min:1000},
+];
+
+let activeCity = '전체';
+let activeBucket = '전체';
+let activeSort = 'default';
+let activeReviewMin = 0;
+let query = '';
+
+function fmtCount(n) {
+  if (n == null) return '—';
+  return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n);
+}
+function naverPlaceUrl(item) {
+  return item.naverUrl || ('https://m.search.naver.com/search.naver?query=' + encodeURIComponent(item.name + ' ' + item.city));
+}
+// 리뷰 근거줄 — card()·magazineCard() 공용
+function scoreRowHtml(item) {
+  const v = item.visitorReviews, b = item.blogReviews;
+  const vLine = `<a class="cs-line t" href="${naverPlaceUrl(item)}" target="_blank" rel="noopener" title="네이버 플레이스로 이동"><span class="cs-dot t"></span>방문자리뷰 <b>${v != null ? v.toLocaleString() : '—'}</b></a>`;
+  const bLine = b != null ? `<a class="cs-line g" href="${naverPlaceUrl(item)}" target="_blank" rel="noopener" title="네이버 플레이스로 이동"><span class="cs-dot g"></span>블로그리뷰 <b>${b.toLocaleString()}</b></a>` : '';
+  return `<div class="c-score-row">
+        <div class="cs-avg"><span class="cs-big">${fmtCount(v)}</span><span class="cs-cap">방문자리뷰</span></div>
+        <div class="cs-brk">${vLine}${bLine}</div>
+      </div>`;
+}
+
+function mapUrl(item) {
+  const q = encodeURIComponent(item.name + ' ' + item.address);
+  return 'https://www.google.com/maps/search/?api=1&query=' + q;
+}
+
+// card: true/false, reserve: '가능'|'불가'|'필수' — 미수집 필드는 표시 안 함, 점(·) 구분 텍스트
+function practicalText(item) {
+  const parts = [];
+  if (item.card === true) parts.push('카드가능');
+  else if (item.card === false) parts.push('현금만');
+  if (item.smoking === '전면금연') parts.push('전면금연');
+  else if (item.smoking) parts.push(item.smoking);
+  if (item.reserve) {
+    const r = item.reserve;
+    parts.push(r.includes('예약') ? r : `예약 ${r}`);
+  }
+  return parts.join(' · ');
+}
+
+function galleryPhotos(item) {
+  return [item.photo, ...(item.extraPhotos || [])].filter(Boolean);
+}
+function photoDataAttrs(item) {
+  const photos = galleryPhotos(item);
+  return `data-photos='${JSON.stringify(photos).replace(/'/g, '&#39;')}' data-name="${item.name}"`;
+}
+
+function card(item) {
+  const photoBlock = item.photo
+    ? `<img src="${item.photo}" alt="${item.name}" loading="lazy" onerror="this.closest('.thumb').innerHTML='<div class=noimg><svg width=28 height=28 viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'><rect x=3 y=5 width=18 height=14 rx=2/><circle cx=9 cy=11 r=2/><path d=\\'M21 15l-5-5-9 9\\'/></svg><span>사진 없음</span></div>'"/>`
+    : `<div class="noimg"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-5-9 9"/></svg><span>사진 없음</span></div>`;
+
+  const closedKr = item.closed || '';
+  const foot = practicalText(item);
+
+  const flagged = getPhotoFlags()[item.name] ? ' flagged' : '';
+  const flagOn = getPhotoFlags()[item.name] ? ' on' : '';
+
+  return `
+  <article class="card${flagged}" data-city="${item.city}" data-bucket="${deriveBucket(item)}" data-search="${(item.name + ' ' + item.genre).toLowerCase()}" data-photo-name="${item.name}" data-naver-url="${item.naverUrl || ''}">
+    <div class="thumb" ${photoDataAttrs(item)}>
+      ${photoBlock}
+      <button class="photo-flag${flagOn}" type="button" title="사진 별로 — 교체 필요 표시">🚩</button>
+      <span class="bucket-tag">${deriveBucket(item)}</span>
+      <span class="thumb-score">${fmtCount(item.visitorReviews)}</span>
+      ${galleryPhotos(item).length > 1 ? `<span class="thumb-count">‹ 1 / ${galleryPhotos(item).length} ›</span>` : ''}
+    </div>
+    <div class="body">
+      <div class="c-name-row">
+        <p class="name"><a href="${naverPlaceUrl(item)}" target="_blank" rel="noopener" title="네이버 플레이스" style="color:inherit; text-decoration:none;">${item.name}</a></p>
+      </div>
+      <p class="c-sub">${item.genre}</p>
+      ${scoreRowHtml(item)}
+      <div class="c-hr"></div>
+      <div class="meta">
+        <div class="row"><span class="k">주소</span><span class="v"><a class="access-link" href="${mapUrl(item)}" target="_blank" rel="noopener" title="구글맵에서 보기">${item.address}</a></span></div>
+        <div class="row"><span class="k">교통</span><span class="v"><a class="access-link" href="${mapUrl(item)}" target="_blank" rel="noopener" title="구글맵에서 보기">${item.access}</a></span></div>
+        <div class="row"><span class="k">예산</span><span class="v">${item.budget}</span></div>
+        ${/없음|확인불가|^$/.test(closedKr) ? '' : `<div class="row"><span class="k">휴무</span><span class="v">${closedKr}</span></div>`}
+      </div>
+      <div class="c-menu">
+        <div class="c-menu-label">대표 안주</div>
+        ${item.menu.map(m => `<div><span class="jp">${m}</span></div>`).join('')}
+      </div>
+      ${foot ? `<div class="c-foot">${foot}</div>` : ''}
+    </div>
+  </article>`;
+}
+
+// 도시 섹션 첫 매장(=현재 필터/정렬 결과의 1번째)을 대형 매거진 카드로 렌더.
+// card()가 쓰는 헬퍼를 그대로 재사용하고, 마크업/CSS(.mag-*)만 별도.
+function magazineCard(item) {
+  const photoBlock = item.photo
+    ? `<img src="${item.photo}" alt="${item.name}" loading="lazy" onerror="this.closest('.mag-photo').innerHTML='<div class=noimg><svg width=28 height=28 viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'><rect x=3 y=5 width=18 height=14 rx=2/><circle cx=9 cy=11 r=2/><path d=\\'M21 15l-5-5-9 9\\'/></svg><span>사진 없음</span></div>'"/>`
+    : `<div class="noimg"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-5-9 9"/></svg><span>사진 없음</span></div>`;
+
+  return `
+  <article class="mag-card" data-city="${item.city}" data-bucket="${deriveBucket(item)}" data-search="${(item.name + ' ' + item.genre).toLowerCase()}">
+    <div class="mag-photo" ${photoDataAttrs(item)}>
+      ${photoBlock}
+      <div class="mag-gradient"></div>
+      <span class="mag-tag">${item.city} 대표 · ${deriveBucket(item)}</span>
+      <div class="mag-score">
+        <span class="num">${fmtCount(item.visitorReviews)}</span>
+        <span class="stat">방문자리뷰</span>
+      </div>
+    </div>
+    <div class="mag-body">
+      <p class="mag-name"><a href="${naverPlaceUrl(item)}" target="_blank" rel="noopener" title="네이버 플레이스">${item.name}</a></p>
+      <div class="mag-scorebrk">
+        <a class="cs-line t" href="${naverPlaceUrl(item)}" target="_blank" rel="noopener"><span class="cs-dot t"></span>방문자리뷰 <b>${item.visitorReviews != null ? item.visitorReviews.toLocaleString() : '—'}</b></a>
+        ${item.blogReviews != null ? `<a class="cs-line g" href="${naverPlaceUrl(item)}" target="_blank" rel="noopener" title="네이버 플레이스로 이동"><span class="cs-dot g"></span>블로그리뷰 <b>${item.blogReviews.toLocaleString()}</b></a>` : ''}
+      </div>
+      <div class="mag-hr"></div>
+      <div class="mag-info">
+        <span class="k">주소</span><span class="v"><a class="access-link" href="${mapUrl(item)}" target="_blank" rel="noopener" title="구글맵에서 보기">${item.address}</a></span>
+        <span class="k">교통</span><span class="v"><a class="access-link" href="${mapUrl(item)}" target="_blank" rel="noopener" title="구글맵에서 보기">${item.access}</a></span>
+        <span class="k">예산</span><span class="v">${item.budget}</span>
+      </div>
+      <div class="mag-menu-label">대표 안주</div>
+      <div class="mag-menu">
+        ${item.menu.slice(0, 3).map(m => `<div><span class="jp">${m}</span></div>`).join('')}
+      </div>
+      <div class="mag-foot">${practicalText(item)}</div>
+    </div>
+  </article>`;
+}
+
+// 필터/정렬 변경 시 결과 영역을 View Transitions API로 부드럽게 크로스페이드.
+// 미지원 브라우저·reduced-motion에서는 즉시 교체(renderResults)로 자동 폴백.
+function render() {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && document.startViewTransition) {
+    document.startViewTransition(() => renderResults());
+  } else {
+    renderResults();
+  }
+}
+
+function renderResults() {
+  const results = document.getElementById('results');
+  const q = query.trim().toLowerCase();
+  let total = 0;
+  let html = '';
+
+  CITY_ORDER.forEach(city => {
+    if (activeCity !== '전체' && activeCity !== city) return;
+    const items = DATA.filter(d => {
+      if (d.city !== city) return false;
+      if (activeBucket !== '전체' && deriveBucket(d) !== activeBucket) return false;
+      if (activeReviewMin > 0) {
+        const r = d.visitorReviews;
+        if (r == null || r < activeReviewMin) return false;
+      }
+      if (q !== '' && !(d.name + ' ' + d.genre).toLowerCase().includes(q)) return false;
+      return true;
+    });
+    if (items.length === 0) return;
+    if (activeSort === 'visitor') {
+      items.sort((a, b) => (b.visitorReviews ?? -1) - (a.visitorReviews ?? -1));
+    } else if (activeSort === 'blog') {
+      items.sort((a, b) => (b.blogReviews ?? -1) - (a.blogReviews ?? -1));
+    }
+    total += items.length;
+    html += `
+    <section class="city" id="city-${city}">
+      <div class="city-head">
+        <h2>${city} <span class="jp">${CITY_EN[city] || ''}</span></h2>
+        <div class="rule"></div>
+        <span class="n">${items.length}개</span>
+      </div>
+      ${window.matchMedia('(max-width: 620px)').matches
+        ? `<div class="grid">${items.map(card).join('')}</div>`
+        : `<div class="city-lead">${magazineCard(items[0])}</div><div class="grid">${items.slice(1).map(card).join('')}</div>`}
+    </section>`;
+  });
+
+  results.innerHTML = html || '<p class="empty">조건에 맞는 매장이 없습니다.</p>';
+  document.getElementById('countLine').textContent = `${total}개 표시 중 (전체 ${DATA.length}개)`;
+}
+
+function buildChips() {
+  // 도시 탭
+  const cityWrap = document.getElementById('cityChips');
+  ['전체', ...CITY_ORDER].forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (c === activeCity ? ' active' : '');
+    b.textContent = c;
+    b.onclick = () => {
+      activeCity = c;
+      [...cityWrap.children].forEach(ch => ch.classList.toggle('active', ch === b));
+      render();
+      // 도시 바꾸면 카드섹션 시작지점으로 스크롤 초기화. (sticky .controls는 이미 상단고정이라
+      // scrollIntoView가 '이미 보임'으로 판단해 무동작 → results 절대위치 기준으로 직접 이동)
+      requestAnimationFrame(() => {
+        const bar = document.querySelector('.controls');
+        const results = document.getElementById('results');
+        const barH = bar ? bar.getBoundingClientRect().height : 0;
+        const y = results.getBoundingClientRect().top + window.scrollY - barH - 8;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    };
+    cityWrap.appendChild(b);
+  });
+
+  // 업종 칩 — 전체 + 확정 BUCKETS 전부 노출
+  const bucketWrap = document.getElementById('bucketChips');
+  const mkBucket = bk => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (bk === activeBucket ? ' active' : '');
+    b.textContent = bk;
+    b.onclick = () => {
+      activeBucket = bk;
+      [...bucketWrap.querySelectorAll('.chip')].forEach(ch => ch.classList.toggle('active', ch === b));
+      render();
+    };
+    return b;
+  };
+  ['전체', ...BUCKETS].forEach(bk => bucketWrap.appendChild(mkBucket(bk)));
+
+  // 정렬
+  document.getElementById('sortSelect').addEventListener('change', e => {
+    activeSort = e.target.value;
+    render();
+  });
+
+  // 점수·리뷰 드롭다운 토글
+  const scoreDrop = document.getElementById('scoreDrop');
+  const scoreDropBtn = document.getElementById('scoreDropBtn');
+  scoreDropBtn.addEventListener('click', e => { e.stopPropagation(); scoreDrop.classList.toggle('open'); });
+  document.addEventListener('click', e => { if (!scoreDrop.contains(e.target)) scoreDrop.classList.remove('open'); });
+  function updateScoreDropLabel() {
+    const parts = [];
+    if (activeReviewMin > 0) parts.push('리뷰 ' + activeReviewMin + '+');
+    scoreDropBtn.innerHTML = (parts.length ? parts.join(' · ') : '리뷰 수') +
+      ' <svg class="car" width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg>';
+    scoreDropBtn.classList.toggle('active', parts.length > 0);
+  }
+
+  const reviewWrap = document.getElementById('reviewChips');
+  REVIEW_STEPS.forEach(step => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (step.min === activeReviewMin ? ' active' : '');
+    b.textContent = step.label;
+    b.onclick = () => {
+      activeReviewMin = step.min;
+      [...reviewWrap.children].forEach(ch => ch.classList.toggle('active', ch === b));
+      updateScoreDropLabel();
+      render();
+    };
+    reviewWrap.appendChild(b);
+  });
+}
+
+function initTheme() {
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('kbg-theme');
+  if (stored) root.setAttribute('data-theme', stored);
+
+  const sync = () => {
+    const isDark = root.getAttribute('data-theme') !== 'light';
+    btn.textContent = isDark ? '🌙 다크모드' : '☀️ 라이트모드';
+  };
+  sync();
+
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('kbg-theme', next);
+    sync();
+  });
+}
+
+// 모바일(≤620px) 사진 타일 → 탭하면 상세 펼침. render()가 다시 그려도
+// 리스너는 #results(부모)에 위임돼있어 재바인딩 불필요. 데이터/필터와 무관.
+function initTileToggle() {
+  const results = document.getElementById('results');
+  const SNAP = 'transform .34s cubic-bezier(.22,.61,.36,1)';   // iOS식 스프링 스냅
+  const parsePhotos = thumb => { try { return JSON.parse(thumb.dataset.photos.replace(/&#39;/g, "'")); } catch { return []; } };
+  const setCounter = (thumb, idx, n) => { const c = thumb.querySelector('.thumb-count'); if (c) c.textContent = `‹ ${idx + 1} / ${n} ›`; };
+  const buildTrack = (thumb, photos) => {
+    let track = thumb.querySelector('.thumb-track');
+    if (!track) {
+      track = document.createElement('div');
+      track.className = 'thumb-track';
+      track.innerHTML = photos.map(p => `<img src="${p}" alt="" draggable="false">`).join('');
+      thumb.insertBefore(track, thumb.firstChild);   // 오버레이(절대배치)들이 위에 유지됨
+    }
+    return track;
+  };
+  const setTrack = (track, idx, w, anim) => {
+    track.style.transition = anim ? SNAP : 'none';
+    track.style.transform = `translateX(${-idx * w}px)`;
+  };
+
+  // 드래그 캐러셀 상태 (손가락 따라 끌림 → 놓으면 스냅)
+  let drag = null, lastSwipeAt = 0;
+  results.addEventListener('touchstart', e => {
+    if (window.innerWidth > 620) return;
+    const track = e.target.closest('.grid .card.is-open .thumb .thumb-track');
+    if (!track) return;
+    const thumb = track.closest('.thumb');
+    const photos = parsePhotos(thumb);
+    if (photos.length < 2) return;
+    const t = e.touches[0];
+    drag = { thumb, track, photos, idx: parseInt(thumb.dataset.idx || '0', 10),
+             startX: t.clientX, startY: t.clientY, w: thumb.clientWidth, moved: false };
+    track.style.transition = 'none';
+  }, { passive: true });
+  results.addEventListener('touchmove', e => {
+    if (!drag) return;
+    const t = e.touches[0];
+    const dx = t.clientX - drag.startX, dy = t.clientY - drag.startY;
+    if (!drag.moved && Math.abs(dx) < Math.abs(dy)) { drag = null; return; }  // 세로 우세 → 페이지 스크롤 양보
+    drag.moved = true;
+    const atStart = drag.idx === 0, atEnd = drag.idx === drag.photos.length - 1;
+    let d = dx;
+    if ((atStart && dx > 0) || (atEnd && dx < 0)) d = dx * 0.35;   // 양끝 고무줄 저항
+    drag.track.style.transform = `translateX(${-drag.idx * drag.w + d}px)`;
+  }, { passive: true });
+  results.addEventListener('touchend', e => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    if (!d.moved) return;
+    const dx = e.changedTouches[0].clientX - d.startX;
+    let idx = d.idx;
+    if (Math.abs(dx) > d.w * 0.2) idx = dx < 0 ? Math.min(d.idx + 1, d.photos.length - 1) : Math.max(d.idx - 1, 0);
+    d.thumb.dataset.idx = idx;
+    setTrack(d.track, idx, d.w, true);
+    setCounter(d.thumb, idx, d.photos.length);
+    lastSwipeAt = Date.now();   // 직후 발생하는 click(카드 접힘) 무시용
+  }, { passive: true });
+
+  // 탭 → 확장/접힘 토글. 열 때 트랙 생성, 접을 때 리셋+트랙 제거.
+  results.addEventListener('click', e => {
+    if (window.innerWidth > 620) return;
+    if (Date.now() - lastSwipeAt < 350) return;   // 방금 스와이프 제스처면 토글 안 함
+    const card = e.target.closest('.grid .card');
+    if (!card) return;
+    if (e.target.closest('a')) return;
+    const thumb = card.querySelector('.thumb');
+    const photos = parsePhotos(thumb);
+    const nowOpen = card.classList.toggle('is-open');
+    if (nowOpen) {
+      if (photos.length > 1) {
+        const track = buildTrack(thumb, photos);
+        const idx = parseInt(thumb.dataset.idx || '0', 10);
+        requestAnimationFrame(() => setTrack(track, idx, thumb.clientWidth, false));
+        setCounter(thumb, idx, photos.length);
+      }
+    } else {
+      thumb.dataset.idx = '0';
+      const track = thumb.querySelector('.thumb-track');
+      if (track) track.remove();
+      if (photos.length) setCounter(thumb, 0, photos.length);
+    }
+    // 펼침/접힘 후 탭한 카드를 고정 필터바 아래로 스크롤 정렬 (아래·위쪽 카드 모두)
+    requestAnimationFrame(() => {
+      const bar = document.querySelector('.controls');
+      const barH = bar ? bar.getBoundingClientRect().height : 0;
+      const y = card.getBoundingClientRect().top + window.scrollY - barH - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+}
+
+// 사진 마킹모드 — 교체할 사진 있는 가게 표시 후 목록 복사(임시 작업도구, localStorage 저장)
+const FLAG_KEY = 'photoFlags-v1';
+function getPhotoFlags() {
+  try { return JSON.parse(localStorage.getItem(FLAG_KEY) || '{}'); }
+  catch { return {}; }
+}
+function setPhotoFlags(flags) {
+  localStorage.setItem(FLAG_KEY, JSON.stringify(flags));
+}
+function updateFlagCount() {
+  const n = Object.keys(getPhotoFlags()).length;
+  document.getElementById('flagCount').textContent = `${n}개 표시됨`;
+}
+function initFlagMode() {
+  const toggleBtn = document.getElementById('flagModeToggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('flag-mode');
+    updateFlagCount();
+  });
+
+  document.getElementById('results').addEventListener('click', e => {
+    const flagBtn = e.target.closest('.photo-flag');
+    if (!flagBtn) return;
+    if (!document.body.classList.contains('flag-mode')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const article = flagBtn.closest('.card');
+    const name = article.dataset.photoName;
+    const url = article.dataset.naverUrl;
+    const flags = getPhotoFlags();
+    if (flags[name]) {
+      delete flags[name];
+      article.classList.remove('flagged');
+      flagBtn.classList.remove('on');
+    } else {
+      flags[name] = url;
+      article.classList.add('flagged');
+      flagBtn.classList.add('on');
+    }
+    setPhotoFlags(flags);
+    updateFlagCount();
+  });
+
+  document.getElementById('flagExportBtn').addEventListener('click', () => {
+    const flags = getPhotoFlags();
+    const lines = Object.entries(flags).map(([name, url]) => `${name} | ${url || '(네이버 링크 없음)'}`);
+    const text = lines.length ? lines.join('\n') : '(표시된 항목 없음)';
+    navigator.clipboard.writeText(text).then(() => {
+      alert(`${lines.length}개 목록이 클립보드에 복사됐습니다. 채팅에 붙여넣어주세요.`);
+    }).catch(() => {
+      prompt('복사 실패 — 아래 텍스트를 직접 복사하세요:', text);
+    });
+  });
+
+  document.getElementById('flagClearBtn').addEventListener('click', () => {
+    if (!confirm('표시된 항목을 전부 해제할까요?')) return;
+    setPhotoFlags({});
+    document.querySelectorAll('.card.flagged').forEach(c => c.classList.remove('flagged'));
+    document.querySelectorAll('.photo-flag.on').forEach(b => b.classList.remove('on'));
+    updateFlagCount();
+  });
+
+  updateFlagCount();
+}
+
+// 사진 갤러리 모달 — 확대아이콘 클릭 시 photo+extraPhotos 넘겨보기
+function initPhotoModal() {
+  const modal = document.getElementById('photoModal');
+  const img = modal.querySelector('.photo-modal-img');
+  const dotsWrap = modal.querySelector('.photo-modal-dots');
+  let photos = [];
+  let index = 0;
+  let currentName = '';
+
+  function renderModal() {
+    img.src = photos[index];
+    img.alt = currentName;
+    modal.classList.toggle('multi', photos.length > 1);
+    dotsWrap.innerHTML = photos.map((_, i) =>
+      `<span class="${i === index ? 'active' : ''}"></span>`
+    ).join('');
+  }
+
+  function open(list, name) {
+    if (!list.length) return;
+    photos = list;
+    index = 0;
+    currentName = name || '';
+    renderModal();
+    modal.classList.add('open');
+    document.body.classList.add('splash-active');
+  }
+
+  function close() {
+    modal.classList.remove('open');
+    document.body.classList.remove('splash-active');
+  }
+
+  function prev() {
+    index = (index - 1 + photos.length) % photos.length;
+    renderModal();
+  }
+
+  function next() {
+    index = (index + 1) % photos.length;
+    renderModal();
+  }
+
+  document.getElementById('results').addEventListener('click', e => {
+    if (window.innerWidth <= 620) return;
+    const thumb = e.target.closest('.thumb, .mag-photo');
+    if (!thumb) return;
+    if (e.target.closest('.photo-flag')) return;
+    if (e.target.closest('a')) return;
+    const list = JSON.parse(thumb.dataset.photos.replace(/&#39;/g, "'"));
+    if (!list.length) return;
+    e.preventDefault();
+    open(list, thumb.dataset.name);
+  });
+
+  modal.querySelector('.photo-modal-close').addEventListener('click', close);
+  modal.querySelector('.photo-modal-prev').addEventListener('click', prev);
+  modal.querySelector('.photo-modal-next').addEventListener('click', next);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  let touchStartX = null;
+  modal.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  modal.addEventListener('touchend', e => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40 && photos.length > 1) {
+      dx > 0 ? prev() : next();
+    }
+    touchStartX = null;
+  }, { passive: true });
+}
+
+function pickCity(city) {
+  const cityWrap = document.getElementById('cityChips');
+  const btn = [...cityWrap.children].find(ch => ch.textContent === city);
+  if (btn) btn.click();
+  const msg = document.getElementById('mapPickedMsg');
+  if (msg) msg.textContent = `${city} 선택됨 — 아래 목록으로 이동`;
+  document.querySelector('.controls')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function initMapNav() {
+  document.querySelectorAll('.map-city-row').forEach(el => {
+    el.addEventListener('click', () => pickCity(el.dataset.city));
+  });
+  // AREA NAVI 총계·지역별 개수를 DATA에서 동적 반영(하드코딩 방지 — 매장 추가시 자동갱신)
+  const counts = {};
+  DATA.forEach(d => { counts[d.city] = (counts[d.city] || 0) + 1; });
+  document.querySelectorAll('.map-city-row[data-city]').forEach(row => {
+    const c = counts[row.dataset.city];
+    const el = row.querySelector('.count');
+    if (c != null && el) el.textContent = c + '곳';
+  });
+  const h = document.querySelector('.map-band h2');
+  if (h) h.textContent = `2개 역세권 총 ${DATA.length}곳`;
+  const hc = document.getElementById('heroCount');
+  if (hc) hc.textContent = `2개 역세권 총 ${DATA.length}곳`;
+  document.title = `위대한 AI님의 회기·석계 술집 가이드 — ${DATA.length}곳`;
+}
+
+// 모바일 필터: 도시탭만 항상 노출, 나머지(등급리본/장르·점수·정렬/범례)는 '필터 ⚙' 토글 뒤로.
+// (표시/숨김은 CSS `.controls:not(.filters-open)`가 담당 — JS는 클래스만 토글)
+// 추가로 모바일↔데스크톱 전환 시 매거진 첫카드 렌더 방식이 달라지므로 재렌더.
+function initMobileFilters() {
+  const btn = document.getElementById('filterToggle');
+  const controls = document.querySelector('.controls');
+  if (btn && controls) {
+    btn.addEventListener('click', () => {
+      const open = controls.classList.toggle('filters-open');
+      btn.classList.toggle('on', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  window.matchMedia('(max-width: 620px)').addEventListener('change', () => render());
+}
+
+buildChips();
+render();
+initTheme();
+initTileToggle();
+initFlagMode();
+initPhotoModal();
+initMapNav();
+initMobileFilters();
+</script>
+</body>
+</html>
