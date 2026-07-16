@@ -103,14 +103,33 @@
       radial-gradient(ellipse 70% 55% at 25% 85%, rgba(224,57,60,.10), transparent 65%),
       linear-gradient(160deg, #14100b 0%, #090806 55%, #0d0a12 100%);
   }
-  .video-hero video {
+  .video-hero .hero-slide {
     position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: heroSlideFade 18s infinite, heroSlideZoom 18s infinite;
+    will-change: opacity, transform;
+  }
+  .video-hero .hero-slide:nth-child(1) { animation-delay: 0s, 0s; }
+  .video-hero .hero-slide:nth-child(2) { animation-delay: 6s, 6s; }
+  .video-hero .hero-slide:nth-child(3) { animation-delay: 12s, 12s; }
+  @keyframes heroSlideFade {
+    0%, 100% { opacity: 0; }
+    4%, 28% { opacity: 1; }
+    33% { opacity: 0; }
+  }
+  @keyframes heroSlideZoom {
+    0% { transform: scale(1.06); }
+    33% { transform: scale(1.14); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .video-hero .hero-slide { animation: none; opacity: 0; }
+    .video-hero .hero-slide:nth-child(1) { opacity: 1; }
   }
   .video-hero .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(9,8,6,.28) 0%, rgba(9,8,6,.05) 34%, rgba(9,8,6,.52) 66%, rgba(9,8,6,.72) 100%);
+    background: linear-gradient(180deg, rgba(9,8,6,.42) 0%, rgba(9,8,6,.22) 34%, rgba(9,8,6,.58) 66%, rgba(9,8,6,.8) 100%);
   }
   .video-hero .hero-content {
     position: absolute; inset: 0;
@@ -1046,16 +1065,50 @@
     }
     .grid .card.is-open .name,
     .grid .card.is-open .c-sub { white-space: normal; overflow: visible; text-overflow: unset; }
+    /* 탭 눌림 피드백 — iOS 리스트셀처럼 살짝 눌리는 느낌(호버형 translateY 대신 스케일만) */
+    .grid .card { transition: transform .3s var(--ease-out), border-color .25s, box-shadow .25s; }
+    .grid .card:active { transform: scale(.97); transition: transform .1s ease-out; }
+    /* 펼침 시 새로 드러나는 내용 — display:none→block은 즉시라 애니메이션 불가하니
+       내용 자체를 살짝 아래→위로 페이드인시켜 "훅 나타나는" 느낌을 완화 */
+    @keyframes tileReveal {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .grid .card.is-open .c-score-row,
+    .grid .card.is-open .c-tier,
+    .grid .card.is-open .meta,
+    .grid .card.is-open .c-menu,
+    .grid .card.is-open .c-foot {
+      animation: tileReveal .32s var(--ease-out) both;
+    }
+    .grid .card.is-open .c-tier { animation-delay: .02s; }
+    .grid .card.is-open .meta { animation-delay: .05s; }
+    .grid .card.is-open .c-menu { animation-delay: .09s; }
+    .grid .card.is-open .c-foot { animation-delay: .13s; }
   }
   @media (max-width: 620px) and (prefers-reduced-motion: reduce) {
     .grid .card .thumb { transition: none; }
+    .grid .card { transition: none; }
+    .grid .card.is-open .c-score-row,
+    .grid .card.is-open .c-tier,
+    .grid .card.is-open .meta,
+    .grid .card.is-open .c-menu,
+    .grid .card.is-open .c-foot { animation: none; }
   }
 
-  /* 필터/정렬 변경 시 결과 영역 크로스페이드 (View Transitions API, render()에서 트리거) */
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: .28s;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  /* 필터/정렬 변경 시 결과 영역만 크로스페이드 (View Transitions API, render()에서 트리거).
+     #results에 고유 view-transition-name을 줘서 root(헤더·히어로 등) 스냅샷과 분리 —
+     안 그러면 브라우저가 문서 전체를 하나의 이미지로 찍어 old/new 크기 차이만큼
+     전체 페이지가 늘어나거나 눌리는 것처럼 보이는 왜곡이 생김(카드 개수·높이가
+     바뀔 때마다 화면 전체가 출렁이는 어색함의 원인). */
+  #results { view-transition-name: results; }
+  ::view-transition-old(results),
+  ::view-transition-new(results) {
+    animation-duration: .24s;
+    animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);   /* iOS 느낌 감속곡선 */
+  }
+  ::view-transition-group(results) {
+    animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
   }
 
   .splash-screen {
@@ -1333,6 +1386,9 @@
   <button class="theme-toggle" id="themeToggle" type="button">🌙 다크모드</button>
 </div>
 <section class="video-hero">
+  <div class="hero-slide" style="background-image:url('https://ldb-phinf.pstatic.net/20260618_159/1781769155844rwXvI_JPEG/IMG_7992.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://blogfiles.pstatic.net/MjAyNjA1MDFfOTkg/MDAxNzc3NTYzMjY5MDUy.RnzZzaqowsp_rw-x-QD2MnhugT3FccELCEXf95GqT9og.cX_4lX1NPC-AkhclFBSAbVd_CXKldk-uI0HYcTB5t4Qg.PNG/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2026-05-01_003147.png')"></div>
+  <div class="hero-slide" style="background-image:url('https://pup-review-phinf.pstatic.net/MjAyNjA1MTdfMjE5/MDAxNzc5MDE3NjI4MDIw._10NeKQX7vTjCOKGnfQYmdMnCgavqEVofvEm92zkTnsg.nEn9T6mCk4611SY3fLX5UvdFkCR77XpBYzTEsS4TdKMg.JPEG/20260509_124746.jpg.jpg?type=w1500_60_sharpen')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">네이버 방문자리뷰·블로그 교차 검증 · <span style="white-space:nowrap" id="heroCount">2개 역세권 총 40곳</span></p>
@@ -1803,6 +1859,37 @@ function initTileToggle() {
     lastSwipeAt = Date.now();   // 직후 발생하는 click(카드 접힘) 무시용
   }, { passive: true });
 
+  // FLIP: 카드 펼침/접힘으로 grid-column이 바뀌면 아래쪽 형제카드들이 순간이동하듯
+  // 즉시 밀림(CSS grid reflow는 애니메이션 불가) — 토글 전후 위치를 기록해뒀다가
+  // 역변환→transform 제거로 부드럽게 이동시키는 것으로 이 "점프"를 없앰.
+  const flipSiblings = (grid, exclude, run) => {
+    if (!grid) { run(); return; }
+    const siblings = [...grid.querySelectorAll('.card')].filter(el => el !== exclude);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) { run(); return; }
+    const firstRects = new Map(siblings.map(el => [el, el.getBoundingClientRect()]));
+    run();
+    requestAnimationFrame(() => {
+      siblings.forEach(el => {
+        const first = firstRects.get(el);
+        const last = el.getBoundingClientRect();
+        const dx = first.left - last.left;
+        const dy = first.top - last.top;
+        if (Math.abs(dx) < .5 && Math.abs(dy) < .5) return;
+        el.style.transition = 'none';
+        el.style.transform = `translate(${dx}px, ${dy}px)`;
+        requestAnimationFrame(() => {
+          el.style.transition = 'transform .38s var(--ease-out)';
+          el.style.transform = '';
+        });
+        el.addEventListener('transitionend', function cleanup() {
+          el.style.transition = '';
+          el.removeEventListener('transitionend', cleanup);
+        }, { once: true });
+      });
+    });
+  };
+
   // 탭 → 확장/접힘 토글. 열 때 트랙 생성, 접을 때 리셋+트랙 제거.
   results.addEventListener('click', e => {
     if (window.innerWidth > 620) return;
@@ -1812,21 +1899,27 @@ function initTileToggle() {
     if (e.target.closest('a')) return;
     const thumb = card.querySelector('.thumb');
     const photos = parsePhotos(thumb);
-    const nowOpen = card.classList.toggle('is-open');
-    if (nowOpen) {
-      if (photos.length > 1) {
-        const track = buildTrack(thumb, photos);
-        const idx = parseInt(thumb.dataset.idx || '0', 10);
-        requestAnimationFrame(() => setTrack(track, idx, thumb.clientWidth, false));
-        setCounter(thumb, idx, photos.length);
+    const grid = card.closest('.grid');
+
+    flipSiblings(grid, card, () => {
+      const nowOpen = card.classList.toggle('is-open');
+      if (nowOpen) {
+        if (photos.length > 1) {
+          const track = buildTrack(thumb, photos);
+          const idx = parseInt(thumb.dataset.idx || '0', 10);
+          requestAnimationFrame(() => setTrack(track, idx, thumb.clientWidth, false));
+          setCounter(thumb, idx, photos.length);
+        }
+      } else {
+        thumb.dataset.idx = '0';
+        const track = thumb.querySelector('.thumb-track');
+        if (track) track.remove();
+        if (photos.length) setCounter(thumb, 0, photos.length);
       }
-    } else {
-      thumb.dataset.idx = '0';
-      const track = thumb.querySelector('.thumb-track');
-      if (track) track.remove();
-      if (photos.length) setCounter(thumb, 0, photos.length);
-    }
+    });
+
     // 펼침/접힘 후 탭한 카드를 고정 필터바 아래로 스크롤 정렬 (아래·위쪽 카드 모두)
+    // — FLIP·썸네일 높이 전환과 같은 타이밍에 같이 움직이도록 동일 프레임에서 시작
     requestAnimationFrame(() => {
       const bar = document.querySelector('.controls');
       const barH = bar ? bar.getBoundingClientRect().height : 0;
