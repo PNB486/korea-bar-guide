@@ -94,9 +94,9 @@
   /* ===== 영상 히어로 + 산토리 인증 스토리 + 지도 밴드 ===== */
   .video-hero {
     position: relative;
-    height: 55vh;
-    min-height: 375px;
-    max-height: 588px;
+    height: 40vh;
+    min-height: 320px;
+    max-height: 440px;
     overflow: hidden;
     background: linear-gradient(160deg, #14100b 0%, #090806 55%, #0d0a12 100%);
   }
@@ -156,7 +156,7 @@
     position: absolute; inset: 0;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    text-align: center; padding: 22vh 24px 0; gap: 14px;
+    text-align: center; padding: 0 24px; gap: 14px;
   }
   .hero-eyebrow {
     margin: 0;
@@ -301,7 +301,7 @@
   @keyframes mapPulse { 0% { r: 6; opacity: .65; } 100% { r: 15; opacity: 0; } }
 
   @media (max-width: 620px) {
-    .video-hero { height: 55vh; min-height: 360px; }
+    .video-hero { height: 44vh; min-height: 340px; }
     .suntory-story { padding: 36px 20px; }
     .suntory-story .story-inner { grid-template-columns: 1fr; gap: 24px; }
     /* 히어로 텍스트 단어 중간에 잘리지 않게(한글 단어 유지) */
