@@ -98,38 +98,59 @@
     min-height: 375px;
     max-height: 588px;
     overflow: hidden;
-    background:
-      radial-gradient(ellipse 80% 60% at 70% 20%, rgba(212,175,55,.14), transparent 60%),
-      radial-gradient(ellipse 70% 55% at 25% 85%, rgba(224,57,60,.10), transparent 65%),
-      linear-gradient(160deg, #14100b 0%, #090806 55%, #0d0a12 100%);
+    background: linear-gradient(160deg, #14100b 0%, #090806 55%, #0d0a12 100%);
   }
-  .video-hero .hero-slide {
-    position: absolute; inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    animation: heroSlideFade 18s infinite, heroSlideZoom 18s infinite;
-    will-change: opacity, transform;
+  /* 사진 대신 컬러 오로라 — 골드/레드 블롭이 천천히 떠다니며 자리를 바꿈 */
+  .hero-aurora { position: absolute; inset: -10%; filter: blur(60px); }
+  .hero-aurora span {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .55;
+    mix-blend-mode: screen;
   }
-  .video-hero .hero-slide:nth-child(1) { animation-delay: 0s, 0s; }
-  .video-hero .hero-slide:nth-child(2) { animation-delay: 6s, 6s; }
-  .video-hero .hero-slide:nth-child(3) { animation-delay: 12s, 12s; }
-  @keyframes heroSlideFade {
-    0%, 100% { opacity: 0; }
-    4%, 28% { opacity: 1; }
-    33% { opacity: 0; }
+  .hero-aurora span:nth-child(1) {
+    width: 52vw; height: 52vw; max-width: 640px; max-height: 640px;
+    top: -14%; right: -8%;
+    background: radial-gradient(circle, rgba(224,164,69,.65), transparent 70%);
+    animation: auroraDrift1 22s ease-in-out infinite;
   }
-  @keyframes heroSlideZoom {
-    0% { transform: scale(1.06); }
-    33% { transform: scale(1.14); }
+  .hero-aurora span:nth-child(2) {
+    width: 46vw; height: 46vw; max-width: 560px; max-height: 560px;
+    bottom: -18%; left: -6%;
+    background: radial-gradient(circle, rgba(224,57,60,.4), transparent 70%);
+    animation: auroraDrift2 26s ease-in-out infinite;
+  }
+  .hero-aurora span:nth-child(3) {
+    width: 38vw; height: 38vw; max-width: 460px; max-height: 460px;
+    top: 30%; left: 30%;
+    background: radial-gradient(circle, rgba(245,192,105,.3), transparent 70%);
+    animation: auroraDrift3 30s ease-in-out infinite;
+  }
+  @keyframes auroraDrift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-6%, 8%) scale(1.12); }
+  }
+  @keyframes auroraDrift2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(8%, -6%) scale(1.08); }
+  }
+  @keyframes auroraDrift3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10%, -10%) scale(1.16); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .video-hero .hero-slide { animation: none; opacity: 0; }
-    .video-hero .hero-slide:nth-child(1) { opacity: 1; }
+    .hero-aurora span { animation: none; }
+  }
+  /* 은은한 도트 그리드 텍스처 — 포차 알전구 느낌 */
+  .video-hero .hero-texture {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(236,226,208,.09) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 85%);
   }
   .video-hero .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(9,8,6,.42) 0%, rgba(9,8,6,.22) 34%, rgba(9,8,6,.58) 66%, rgba(9,8,6,.8) 100%);
+    background: linear-gradient(180deg, rgba(9,8,6,.25) 0%, rgba(9,8,6,.05) 34%, rgba(9,8,6,.55) 66%, rgba(9,8,6,.78) 100%);
   }
   .video-hero .hero-content {
     position: absolute; inset: 0;
@@ -1386,9 +1407,8 @@
   <button class="theme-toggle" id="themeToggle" type="button">🌙 다크모드</button>
 </div>
 <section class="video-hero">
-  <div class="hero-slide" style="background-image:url('https://ldb-phinf.pstatic.net/20260618_159/1781769155844rwXvI_JPEG/IMG_7992.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('https://blogfiles.pstatic.net/MjAyNjA1MDFfOTkg/MDAxNzc3NTYzMjY5MDUy.RnzZzaqowsp_rw-x-QD2MnhugT3FccELCEXf95GqT9og.cX_4lX1NPC-AkhclFBSAbVd_CXKldk-uI0HYcTB5t4Qg.PNG/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2026-05-01_003147.png')"></div>
-  <div class="hero-slide" style="background-image:url('https://pup-review-phinf.pstatic.net/MjAyNjA1MTdfMjE5/MDAxNzc5MDE3NjI4MDIw._10NeKQX7vTjCOKGnfQYmdMnCgavqEVofvEm92zkTnsg.nEn9T6mCk4611SY3fLX5UvdFkCR77XpBYzTEsS4TdKMg.JPEG/20260509_124746.jpg.jpg?type=w1500_60_sharpen')"></div>
+  <div class="hero-aurora"><span></span><span></span><span></span></div>
+  <div class="hero-texture"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">네이버 방문자리뷰·블로그 교차 검증 · <span style="white-space:nowrap" id="heroCount">2개 역세권 총 40곳</span></p>
