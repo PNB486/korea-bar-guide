@@ -1836,6 +1836,14 @@ function renderResults() {
 }
 
 function buildChips() {
+  // 필터(도시/업종) 전환 시 카드섹션 상단으로 스크롤 초기화
+  const scrollResultsTop = () => requestAnimationFrame(() => {
+    const bar = document.querySelector('.controls');
+    const results = document.getElementById('results');
+    const barH = bar ? bar.getBoundingClientRect().height : 0;
+    const y = results.getBoundingClientRect().top + window.scrollY - barH - 8;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  });
   // 도시 탭
   const cityWrap = document.getElementById('cityChips');
   ['전체', ...CITY_ORDER].forEach(c => {
@@ -1847,15 +1855,7 @@ function buildChips() {
       [...cityWrap.children].forEach(ch => ch.classList.toggle('active', ch === b));
       renderBucketChips();
       render();
-      // 도시 바꾸면 카드섹션 시작지점으로 스크롤 초기화. (sticky .controls는 이미 상단고정이라
-      // scrollIntoView가 '이미 보임'으로 판단해 무동작 → results 절대위치 기준으로 직접 이동)
-      requestAnimationFrame(() => {
-        const bar = document.querySelector('.controls');
-        const results = document.getElementById('results');
-        const barH = bar ? bar.getBoundingClientRect().height : 0;
-        const y = results.getBoundingClientRect().top + window.scrollY - barH - 8;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      });
+      scrollResultsTop();
     };
     cityWrap.appendChild(b);
   });
@@ -1870,6 +1870,7 @@ function buildChips() {
       activeBucket = bk;
       [...bucketWrap.querySelectorAll('.chip')].forEach(ch => ch.classList.toggle('active', ch === b));
       render();
+      scrollResultsTop();
     };
     return b;
   };
