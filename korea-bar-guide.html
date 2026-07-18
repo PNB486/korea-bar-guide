@@ -283,6 +283,53 @@
     margin: 14px 0 0; font-family: ui-monospace, monospace; font-size: 12px;
     color: var(--accent); opacity: .85; line-height: 1.6; min-height: 1.6em;
   }
+  /* AREA NAVI — 경량 SVG 2구역맵 (별내·갈매) */
+  .area-map { width: 100%; max-width: 460px; height: auto; display: block; margin: 4px auto 18px; overflow: visible; }
+  .area-map .zone { cursor: pointer; }
+  .area-map .zone:focus { outline: none; }
+  .area-map .zone-shape {
+    fill: color-mix(in srgb, var(--text) 5%, transparent);
+    stroke: color-mix(in srgb, var(--text) 20%, transparent);
+    stroke-width: 1.4; transition: fill .18s, stroke .18s;
+  }
+  .area-map .zone:hover .zone-shape,
+  .area-map .zone:focus-visible .zone-shape {
+    fill: color-mix(in srgb, var(--accent) 16%, transparent); stroke: var(--accent);
+  }
+  .area-map text { pointer-events: none; }
+  .area-map .zone-ko { font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 23px; fill: var(--text); text-anchor: middle; }
+  .area-map .zone-jp { font-family: ui-monospace, monospace; font-size: 10px; fill: var(--text-faint); text-anchor: middle; letter-spacing: .04em; }
+  .area-map .zone-cnt { font-family: ui-monospace, monospace; font-weight: 700; font-size: 13px; fill: var(--accent); text-anchor: middle; }
+
+  /* 오늘의 픽 */
+  .pick-wrap { margin-top: 16px; }
+  .pick-btn {
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px;
+    color: var(--bg); background: var(--accent); border: none; border-radius: 999px;
+    padding: 10px 20px; cursor: pointer; transition: filter .15s, transform .1s;
+  }
+  .pick-btn:hover { filter: brightness(1.08); }
+  .pick-btn:active { transform: translateY(1px); }
+  .pick-panel { margin-top: 16px; animation: pickIn .25s ease; }
+  @keyframes pickIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .pick-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pick-card {
+    display: flex; flex-direction: column; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+    background: color-mix(in srgb, var(--text) 3%, transparent); transition: border-color .15s, transform .1s;
+  }
+  .pick-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .pick-card .pc-photo { display: block; width: 100%; aspect-ratio: 4/3; background-size: cover; background-position: center; background-color: color-mix(in srgb, var(--text) 8%, transparent); }
+  .pick-card .pc-body { padding: 9px 11px 11px; display: flex; flex-direction: column; gap: 3px; }
+  .pick-card .pc-name { font-family: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13.5px; color: var(--text); line-height: 1.3; }
+  .pick-card .pc-meta { font-family: ui-monospace, monospace; font-size: 11px; color: var(--text-dim); }
+  .pick-reroll {
+    margin-top: 12px; font-family: ui-monospace, monospace; font-size: 12px; color: var(--accent);
+    background: transparent; border: 1px solid var(--accent); border-radius: 999px; padding: 6px 14px; cursor: pointer;
+  }
+  .pick-reroll:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  @media (max-width: 620px) { .pick-cards { grid-template-columns: 1fr; } }
+
   .map-svg-wrap svg { width: 100%; max-width: 460px; height: auto; display: block; overflow: visible; margin: 0 auto; }
   .map-svg-wrap .jp-shape {
     fill: color-mix(in srgb, var(--text) 5%, transparent);
@@ -1423,20 +1470,38 @@
   <div class="map-inner">
   <div>
     <p class="map-eyebrow">AREA NAVI</p>
-    <h2>3개 지역 총 141곳</h2>
+    <h2>2개 지역 총 150곳</h2>
+    <svg class="area-map" viewBox="0 0 460 250" role="group" aria-label="별내·갈매 지역 지도 — 존을 눌러 필터">
+      <!-- 갈매(좌하) / 별내(우상) 두 존이 대각선 경계를 공유 (실제 인접 지구) -->
+      <g class="zone" data-city="갈매" tabindex="0" role="button" aria-label="갈매 매장 보기">
+        <path class="zone-shape" d="M22 92 L232 26 L252 150 L196 236 L34 214 Z"/>
+        <text class="zone-ko" x="132" y="138">갈매</text>
+        <text class="zone-jp" x="132" y="158">GALMAE · 구리 신도시</text>
+        <text class="zone-cnt" data-city="갈매" x="132" y="180">50곳</text>
+      </g>
+      <g class="zone" data-city="별내" tabindex="0" role="button" aria-label="별내 매장 보기">
+        <path class="zone-shape" d="M232 26 L440 44 L428 182 L252 150 Z"/>
+        <text class="zone-ko" x="344" y="98">별내</text>
+        <text class="zone-jp" x="344" y="118">BYEOLLAE · 남양주 신도시</text>
+        <text class="zone-cnt" data-city="별내" x="344" y="140">100곳</text>
+      </g>
+    </svg>
     <div class="map-city-row" data-city="별내">
-      <div class="name-jp"><span class="ko">별내</span><span class="jp">BYEOLLAE · 신도시 상권 · 밥집70·술집30</span></div>
+      <div class="name-jp"><span class="ko">별내</span><span class="jp">BYEOLLAE · 남양주 신도시 상권</span></div>
       <div class="count-arrow"><span class="count">100곳</span><span class="arrow">→</span></div>
     </div>
-    <div class="map-city-row" data-city="회기">
-      <div class="name-jp"><span class="ko">회기</span><span class="jp">HOEGI · 경희대 대학가</span></div>
-      <div class="count-arrow"><span class="count">20곳</span><span class="arrow">→</span></div>
-    </div>
-    <div class="map-city-row" data-city="석계">
-      <div class="name-jp"><span class="ko">석계</span><span class="jp">SEOKGYE · 로컬 먹자골목</span></div>
-      <div class="count-arrow"><span class="count">20곳</span><span class="arrow">→</span></div>
+    <div class="map-city-row" data-city="갈매">
+      <div class="name-jp"><span class="ko">갈매</span><span class="jp">GALMAE · 구리 신도시 상권</span></div>
+      <div class="count-arrow"><span class="count">50곳</span><span class="arrow">→</span></div>
     </div>
     <p class="map-picked-msg" id="mapPickedMsg"></p>
+    <div class="pick-wrap">
+      <button class="pick-btn" id="pickBtn" type="button">🎲 오늘의 픽 3곳</button>
+      <div class="pick-panel" id="pickPanel" hidden>
+        <div class="pick-cards" id="pickCards"></div>
+        <button class="pick-reroll" id="pickReroll" type="button">다시 뽑기 ↻</button>
+      </div>
+    </div>
   </div>
   </div>
 </section>
@@ -2181,22 +2246,54 @@ function pickCity(city) {
   document.querySelector('.controls')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 function initMapNav() {
+  // 텍스트 행 + SVG 구역맵 존, 둘 다 클릭 시 해당 도시 필터
   document.querySelectorAll('.map-city-row').forEach(el => {
     el.addEventListener('click', () => pickCity(el.dataset.city));
+  });
+  document.querySelectorAll('.area-map .zone').forEach(el => {
+    el.addEventListener('click', () => pickCity(el.dataset.city));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickCity(el.dataset.city); }
+    });
   });
   // AREA NAVI 총계·지역별 개수를 DATA에서 동적 반영(하드코딩 방지 — 매장 추가시 자동갱신)
   const counts = {};
   DATA.forEach(d => { counts[d.city] = (counts[d.city] || 0) + 1; });
-  document.querySelectorAll('.map-city-row[data-city]').forEach(row => {
-    const c = counts[row.dataset.city];
-    const el = row.querySelector('.count');
-    if (c != null && el) el.textContent = c + '곳';
+  document.querySelectorAll('.map-city-row[data-city] .count').forEach(el => {
+    el.textContent = (counts[el.closest('[data-city]').dataset.city] || 0) + '곳';
+  });
+  document.querySelectorAll('.zone-cnt[data-city]').forEach(el => {
+    el.textContent = (counts[el.dataset.city] || 0) + '곳';
   });
   const h = document.querySelector('.map-band h2');
   if (h) h.textContent = `${CITY_ORDER.length}개 지역 총 ${DATA.length}곳`;
   const hc = document.getElementById('heroCount');
   if (hc) hc.textContent = `${CITY_ORDER.length}개 지역 총 ${DATA.length}곳`;
   document.title = `위대한 AI님의 별내 근처 맛집 가이드 — ${DATA.length}곳`;
+  // 오늘의 픽 — 전체 DATA에서 3곳 무중복 랜덤
+  const pickBtn = document.getElementById('pickBtn');
+  const pickReroll = document.getElementById('pickReroll');
+  if (pickBtn) pickBtn.addEventListener('click', rollTodaysPick);
+  if (pickReroll) pickReroll.addEventListener('click', rollTodaysPick);
+}
+
+function rollTodaysPick() {
+  const pool = DATA.slice();
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const picks = pool.slice(0, 3);
+  const wrap = document.getElementById('pickCards');
+  wrap.innerHTML = picks.map(item => `
+    <a class="pick-card" href="${naverPlaceUrl(item)}" target="_blank" rel="noopener">
+      <span class="pc-photo" style="background-image:url('${item.photo}')"></span>
+      <span class="pc-body">
+        <span class="pc-name">${item.name}</span>
+        <span class="pc-meta">${item.city} · ${item.bucket}${item.score ? ` · ★ ${item.score.toFixed(2)}` : ''}</span>
+      </span>
+    </a>`).join('');
+  document.getElementById('pickPanel').hidden = false;
 }
 
 // 모바일 필터: 도시탭만 항상 노출, 나머지(등급리본/장르·점수·정렬/범례)는 '필터 ⚙' 토글 뒤로.
