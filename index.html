@@ -1532,6 +1532,7 @@
           <option value="default">기본순</option>
           <option value="visitor">방문자리뷰 많은순</option>
           <option value="blog">블로그리뷰 많은순</option>
+          <option value="score">별점 높은순</option>
         </select>
       </div>
 
@@ -1952,6 +1953,9 @@ function renderResults() {
       items.sort((a, b) => (b.visitorReviews ?? -1) - (a.visitorReviews ?? -1));
     } else if (activeSort === 'blog') {
       items.sort((a, b) => (b.blogReviews ?? -1) - (a.blogReviews ?? -1));
+    } else if (activeSort === 'score') {
+      items.sort((a, b) => (b.score ?? -1) - (a.score ?? -1)
+        || (b.visitorReviews ?? -1) - (a.visitorReviews ?? -1));
     }
     total += items.length;
     html += `
